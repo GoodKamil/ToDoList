@@ -5,12 +5,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;400;700;800&display=swap" rel="stylesheet">
     <title>ToDoApp</title>
 
     <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
+
+    <div class="contener">
+        <div class="section">
+            <div class="header">
+                <h1 class='header__text'>Zaplanuj swoje zadania na następne dni</h1>
+                <button class="header__btn">NewTask</button>
+            </div>
+            <form action="#" class="form">
+                <input type="text" class="form__text" placeholder="Nazwa zadania">
+                <select class="form__section" id="level">
+                    <option class='form__option' value="ważne">Ważne</option>
+                    <option class='form__option' value="bardzo ważne">Bardzo ważne</option>
+                </select>
+            </form>
+        </div>
+        <div class="cards">
+            <div class="row">
+                <div class="card green">
+                    <div class="card__data">
+                        <p class="card__data--text">23 September</p>
+                    </div>
+                    <div class="card__task">
+                        <p class="card__task--text">Zakupy</p>
+                    </div>
+                </div>
+
+                <div class="card red">
+                    <div class="card__data">
+                        <p class="card__data--text">23 September</p>
+                    </div>
+                    <div class="card__task">
+                        <p class="card__task--text">Sprawdzian</p>
+                    </div>
+                </div>
+
+                <div class="card green">
+                    <div class="card__data">
+                        <p class="card__data--text">23 September</p>
+                    </div>
+                    <div class="card__task">
+                        <p class="card__task--text">Kartkówka</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 

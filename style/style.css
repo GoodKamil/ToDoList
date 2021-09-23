@@ -1,0 +1,160 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #8b63da;
+  --color-primary-light: #fbc2eb;
+  --color-pink-light: #cb98ed;
+
+  --color-black: #000;
+
+  --color-white: #fff;
+
+  --color-red: rgba(221, 29, 29, 0.5);
+  --color-green: rgba(48, 145, 48, 0.5);
+
+  --space: 3rem;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 'Mukta', sans-serif;
+  overflow: hidden;
+  line-height: 1.6;
+}
+.contener {
+  display: flex;
+  padding: var(--space);
+  height: 100vh;
+  width: 100vw;
+}
+.section {
+  position: relative;
+  flex-basis: 40%;
+  background-color: var(--color-primary);
+}
+.header {
+  text-align: center;
+  padding: 1rem 3rem;
+}
+
+.header__text {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-top: var(--space);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.header__btn {
+  font-size: 2.5rem;
+  font-family: inherit;
+  padding: 1rem 4rem;
+  margin-top: var(--space);
+  text-align: center;
+  border-style: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+
+.header__btn:hover {
+  background-color: var(--color-pink-light);
+  color: var(--color-white);
+  transform: scale(1.05);
+}
+
+.form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  animation: entry 0.6s ease-in;
+}
+
+@keyframes entry {
+  0% {
+    transform: translate(-50%, -10%);
+    opacity: 0;
+  }
+  70% {
+    transform: translate(-50%, -90%);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+.form.hidden {
+  display: none;
+}
+
+.form__text {
+  font-size: 2.5rem;
+  font-family: inherit;
+  border-style: none;
+  border-radius: 100px;
+
+  padding: 1rem 3rem;
+  outline: none;
+  margin-bottom: var(--space);
+  box-shadow: 0 1rem 4rem var(--color-black);
+}
+
+.form__text:focus {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.form__section {
+  font-size: 2rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.cards {
+  flex: 1;
+  background-color: var(--color-primary-light);
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--space);
+}
+.card {
+  flex-basis: 30%;
+  text-align: center;
+  padding: 2rem 4rem;
+  border-radius: 15px 50px;
+}
+.card__data--text,
+.card__task--text {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+}
+.card__task--text {
+  margin-top: var(--space);
+  font-weight: 700;
+}
+
+.red {
+  background-color: var(--color-red);
+}
+.green {
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
