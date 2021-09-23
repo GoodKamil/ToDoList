@@ -129,7 +129,6 @@ body {
 
 .row {
   display: flex;
-  justify-content: space-around;
   align-items: center;
   align-content: center;
   flex-wrap: wrap;
@@ -140,6 +139,7 @@ body {
   text-align: center;
   padding: 2rem 4rem;
   border-radius: 15px 50px;
+  margin: 0 2rem 5rem 1rem;
 }
 .card__data--text,
 .card__task--text {

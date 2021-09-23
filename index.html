@@ -22,11 +22,11 @@
                 <h1 class='header__text'>Zaplanuj swoje zadania na następne dni</h1>
                 <button class="header__btn">NewTask</button>
             </div>
-            <form action="#" class="form">
+            <form action="#" class="form hidden">
                 <input type="text" class="form__text" placeholder="Nazwa zadania">
                 <select class="form__section" id="level">
-                    <option class='form__option' value="ważne">Ważne</option>
-                    <option class='form__option' value="bardzo ważne">Bardzo ważne</option>
+                    <option class='form__option' value="green">Ważne</option>
+                    <option class='form__option' value="red">Bardzo ważne</option>
                 </select>
             </form>
         </div>
@@ -58,6 +58,32 @@
                         <p class="card__task--text">Kartkówka</p>
                     </div>
                 </div>
+                <div class="card green">
+                    <div class="card__data">
+                        <p class="card__data--text">23 September</p>
+                    </div>
+                    <div class="card__task">
+                        <p class="card__task--text">Kartkówka</p>
+                    </div>
+                </div>
+                <div class="card green">
+                    <div class="card__data">
+                        <p class="card__data--text">23 September</p>
+                    </div>
+                    <div class="card__task">
+                        <p class="card__task--text">Kartkówka</p>
+                    </div>
+                </div>
+
+                <div class="card red">
+                    <div class="card__data">
+                        <p class="card__data--text">23 September</p>
+                    </div>
+                    <div class="card__task">
+                        <p class="card__task--text">Sprawdzian</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
