@@ -2,7 +2,10 @@ const btnNewTask = document.querySelector('.header__btn');
 const formNewTask = document.querySelector('.form');
 const inputTask = document.querySelector('.form__text');
 const importanceTask = document.querySelector('.form__section');
+const endTask = document.querySelector('.form__date');
 const rowTask = document.querySelector('.row');
+let dataTask;
+let end;
 
 //Monhts
 const month = [
@@ -25,18 +28,40 @@ let day = date.getDate();
 let numberMonth = date.getMonth();
 
 class Task {
-  constructor(valueInput, importance) {
+  constructor(valueInput, importance, id) {
     this.valueInput = valueInput;
     this.importance = importance;
+    this.id = id;
   }
 }
 
 class App {
   #NewTask = [];
+  #numberId = 0;
   constructor() {
     btnNewTask.addEventListener('click', this._ShowInput);
     formNewTask.addEventListener('submit', this._addTask.bind(this));
+    // rowTask.addEventListener('click', this._DeleteTask.bind(this));
   }
+
+  // _DeleteTask(e) {
+  //   const nrId = Number(e.target.dataset.id);
+  //   console.log(nrId);
+  //   // this.#NewTask.splice(nrId, 1);
+
+  //   // const RenderId = this._RenderIdTask(nrId);
+
+  //   this._RenderIdTask(nrId);
+
+  //   // console.log(this.#NewTask);
+  //   console.log(this.#NewTask);
+  // }
+
+  // _RenderIdTask(value) {
+  //   this.#NewTask.forEach(task => {
+  //     console.log(task.id.findIndex(value));
+  //   });
+  // }
 
   //show Input
   _ShowInput() {
@@ -45,9 +70,12 @@ class App {
   }
 
   _showTask(workout) {
-    const html = `<div class="card ${workout.importance}">
+    const html = `<div class="card ${workout.importance}" data-id="${this
+      .#numberId++}">
                     <div class="card__data">
-                        <p class="card__data--text">${day} ${month[numberMonth]}</p>
+                        <p class="card__data--text">${day} ${
+      month[numberMonth]
+    }</p>
                     </div>
                     <div class="card__task">
                         <p class="card__task--text">${workout.valueInput}</p>
@@ -55,6 +83,8 @@ class App {
                 </div>`;
 
     rowTask.insertAdjacentHTML('beforeend', html);
+
+    //card task
   }
 
   //Render Task to first letter uppercase
@@ -74,14 +104,16 @@ class App {
     e.preventDefault();
     const valueInput = inputTask.value;
     const importance = importanceTask.value;
-    let dataTask;
+    end = endTask.value;
+
+    console.log(end);
 
     if (!valueInput || Number(valueInput)) return;
 
     const renderInputText = this._Text(valueInput);
 
     // console.log(importanceClass);
-    dataTask = new Task(renderInputText, importance);
+    dataTask = new Task(renderInputText, importance, this.#numberId);
 
     //Add new object to workout array
     this.#NewTask.push(dataTask);
