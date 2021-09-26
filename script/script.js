@@ -1,8 +1,9 @@
+const sectionNewTaks = document.querySelector('.first__section');
 const btnNewTask = document.querySelector('.header__btn');
 const formNewTask = document.querySelector('.form');
 const inputTask = document.querySelector('.form__text');
 const importanceTask = document.querySelector('.form__section');
-const endTask = document.querySelector('.form__date');
+const endTask = document.querySelector('.form__label--date');
 const rowTask = document.querySelector('.row');
 let dataTask;
 let end;
@@ -23,66 +24,52 @@ const month = [
   'December',
 ];
 
-let date = new Date();
-let day = date.getDate();
-let numberMonth = date.getMonth();
+const date = new Date();
+const day = date.getDate();
+const numberMonth = `${date.getMonth() + 1}`.padStart(2, '0');
+const year = `${date.getFullYear()}`.padStart(2, '0');
 
 class Task {
-  constructor(valueInput, importance, id) {
+  constructor(valueInput, importance) {
     this.valueInput = valueInput;
     this.importance = importance;
-    this.id = id;
   }
 }
 
 class App {
   #NewTask = [];
-  #numberId = 0;
   constructor() {
     btnNewTask.addEventListener('click', this._ShowInput);
     formNewTask.addEventListener('submit', this._addTask.bind(this));
-    // rowTask.addEventListener('click', this._DeleteTask.bind(this));
+    rowTask.addEventListener('click', this._DeleteTask);
   }
 
-  // _DeleteTask(e) {
-  //   const nrId = Number(e.target.dataset.id);
-  //   console.log(nrId);
-  //   // this.#NewTask.splice(nrId, 1);
+  _DeleteTask(e) {
+    const target = e.target.dataset.option;
+    if (target !== 'delete') return;
 
-  //   // const RenderId = this._RenderIdTask(nrId);
-
-  //   this._RenderIdTask(nrId);
-
-  //   // console.log(this.#NewTask);
-  //   console.log(this.#NewTask);
-  // }
-
-  // _RenderIdTask(value) {
-  //   this.#NewTask.forEach(task => {
-  //     console.log(task.id.findIndex(value));
-  //   });
-  // }
+    e.target.remove();
+  }
 
   //show Input
   _ShowInput() {
+    sectionNewTaks.classList.add('hidden');
     formNewTask.classList.remove('hidden');
     inputTask.focus();
   }
 
   _showTask(workout) {
-    const html = `<div class="card ${workout.importance}" data-id="${this
-      .#numberId++}">
+    const html = `<div class="card ${workout.importance}" data-option="delete">
                     <div class="card__data">
-                        <p class="card__data--text">${day} ${
-      month[numberMonth]
-    }</p>
+                        <p class="card__data--text margin-bottom">🏁 ${year}-${numberMonth}-${day}</p>
+     <p class="card__data--text">🛑 ${end}</p>
                     </div>
                     <div class="card__task">
-                        <p class="card__task--text">${workout.valueInput}</p>
+                        <p class="card__task--text">📝 ${workout.valueInput}</p>
                     </div>
                 </div>`;
 
-    rowTask.insertAdjacentHTML('beforeend', html);
+    rowTask.insertAdjacentHTML('afterbegin', html);
 
     //card task
   }
@@ -95,6 +82,7 @@ class App {
 
   _hide() {
     inputTask.value = '';
+    sectionNewTaks.classList.remove('hidden');
     formNewTask.classList.add('hidden');
   }
 
@@ -102,18 +90,19 @@ class App {
 
   _addTask(e) {
     e.preventDefault();
+
     const valueInput = inputTask.value;
     const importance = importanceTask.value;
     end = endTask.value;
 
     console.log(end);
 
-    if (!valueInput || Number(valueInput)) return;
+    if (!valueInput || Number(valueInput) || !end) return;
 
     const renderInputText = this._Text(valueInput);
 
     // console.log(importanceClass);
-    dataTask = new Task(renderInputText, importance, this.#numberId);
+    dataTask = new Task(renderInputText, importance);
 
     //Add new object to workout array
     this.#NewTask.push(dataTask);

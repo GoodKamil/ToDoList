@@ -41,24 +41,52 @@ body {
   flex-basis: 40%;
   background-color: var(--color-primary);
 }
-.header {
+.first__section {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  transform: translateY(-50%);
+  animation: entry 0.5s linear;
   text-align: center;
+  width: 100%;
+}
+
+@keyframes entry {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  35% {
+    transform: translateY(-80%);
+    opacity: 0.1;
+  }
+  70% {
+    transform: translateY(-30%);
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+}
+.header {
   padding: 1rem 3rem;
 }
 
 .header__text {
   font-size: 3rem;
   font-weight: 800;
-  margin-top: var(--space);
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
 .header__btn {
   font-size: 2.5rem;
+  margin-top: var(--space);
   font-family: inherit;
   padding: 1rem 4rem;
-  margin-top: var(--space);
+
   text-align: center;
   border-style: none;
   border-radius: 100px;
@@ -74,30 +102,36 @@ body {
 
 .form {
   position: absolute;
+  display: flex;
   top: 50%;
   left: 50%;
-  display: flex;
   flex-direction: column;
   transform: translate(-50%, -50%);
   text-align: center;
-  animation: entry 0.6s ease-in;
+  animation: show 0.5s linear;
 }
 
-@keyframes entry {
+@keyframes show {
   0% {
-    transform: translate(-50%, -10%);
+    transform: translate(-50%, -50%);
     opacity: 0;
   }
-  70% {
-    transform: translate(-50%, -90%);
-    opacity: 0.8;
+  35% {
+    transform: translate(-50%, -20%);
+    opacity: 0.1;
   }
+  70% {
+    transform: translate(-50%, -70%);
+    opacity: 0.4;
+  }
+
   100% {
     transform: translate(-50%, -50%);
     opacity: 1;
   }
 }
-.form.hidden {
+
+.hidden {
   display: none;
 }
 
@@ -106,7 +140,6 @@ body {
   font-family: inherit;
   border-style: none;
   border-radius: 100px;
-
   padding: 1rem 3rem;
   outline: none;
   margin-bottom: var(--space);
@@ -133,10 +166,39 @@ body {
   width: 70%;
   align-self: center;
 }
+.btn__Task {
+  position: relative;
+  width: 50%;
+  align-self: center;
+  margin-top: 5rem;
+  animation: move 3s 2s linear infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  32% {
+    transform: scale(1.05);
+  }
+  40% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 .cards {
   flex: 1;
   background-color: var(--color-primary-light);
+  overflow-y: scroll;
 }
 
 .row {
@@ -156,11 +218,11 @@ body {
 }
 .card__data--text,
 .card__task--text {
-  font-size: 2.5rem;
-  letter-spacing: 2px;
+  font-size: 2rem;
+  letter-spacing: 3px;
 }
 .card__task--text {
-  margin-top: var(--space);
+  margin-top: 2rem;
   font-weight: 700;
 }
 
@@ -170,4 +232,95 @@ body {
 .green {
   background-color: var(--color-green);
   color: var(--color-white);
+}
+.yellow {
+  background-color: yellow;
+  color: black;
+}
+
+/* ---------------------------------------Media------------------ */
+
+@media only screen and (max-width: 1400px) and (orientation: landscape) {
+  .section {
+    flex-basis: 40%;
+  }
+  .card {
+    flex-basis: 45%;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+  html {
+    font-size: 45%;
+  }
+}
+
+@media only screen and (max-width: 800px) and (orientation: landscape) {
+  html {
+    font-size: 42.5%;
+  }
+  .contener {
+    padding: 0;
+  }
+
+  .section {
+    flex-basis: 45%;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 600px) and (orientation: landscape) {
+  html {
+    font-size: 37.5%;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (orientation: portrait) {
+  html {
+    font-size: 55%;
+  }
+  .first__section {
+    top: 30%;
+  }
+  .form {
+    top: 30%;
+  }
+  .card {
+    flex-basis: 45%;
+  }
+}
+@media only screen and (max-width: 800px) and (orientation: portrait) {
+  html {
+    font-size: 50%;
+  }
+  .first__section {
+    top: 40%;
+  }
+  .form {
+    top: 50%;
+  }
+  .contener {
+    padding: 2rem;
+    flex-direction: column;
+  }
+  .card {
+    flex-basis: 45%;
+  }
+}
+
+@media only screen and (max-width: 500px) and (orientation: portrait) {
+  html {
+    font-size: 40%;
+  }
+  .contener {
+    padding: 0;
+    flex-direction: column;
+  }
+
+  .row {
+    flex-direction: column;
+  }
 }
