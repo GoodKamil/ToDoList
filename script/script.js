@@ -8,6 +8,11 @@ const rowTask = document.querySelector('.row');
 let dataTask;
 let end;
 
+const date = new Date();
+const day = date.getDate();
+const numberMonth = `${date.getMonth() + 1}`.padStart(2, '0');
+const year = `${date.getFullYear()}`.padStart(2, '0');
+
 //Monhts
 const month = [
   'January',
@@ -24,15 +29,11 @@ const month = [
   'December',
 ];
 
-const date = new Date();
-const day = date.getDate();
-const numberMonth = `${date.getMonth() + 1}`.padStart(2, '0');
-const year = `${date.getFullYear()}`.padStart(2, '0');
-
 class Task {
-  constructor(valueInput, importance) {
-    this.valueInput = valueInput;
+  constructor(task, importance, dateEndTask) {
+    this.task = task;
     this.importance = importance;
+    this.dateEndTask = dateEndTask;
   }
 }
 
@@ -65,7 +66,7 @@ class App {
      <p class="card__data--text">🛑 ${end}</p>
                     </div>
                     <div class="card__task">
-                        <p class="card__task--text">📝 ${workout.valueInput}</p>
+                        <p class="card__task--text">📝 ${workout.task}</p>
                     </div>
                 </div>`;
 
@@ -102,7 +103,7 @@ class App {
     const renderInputText = this._Text(valueInput);
 
     // console.log(importanceClass);
-    dataTask = new Task(renderInputText, importance);
+    dataTask = new Task(renderInputText, importance, end);
 
     //Add new object to workout array
     this.#NewTask.push(dataTask);
