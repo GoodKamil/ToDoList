@@ -325,4 +325,7 @@ body {
   .row {
     flex-direction: column;
   }
+  .btn__Task {
+    margin-top: 3rem;
+  }
 }
