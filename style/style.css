@@ -169,9 +169,8 @@ body {
   align-self: center;
 }
 .btn__Task {
-  position: relative;
-  width: 50%;
   align-self: center;
+  -webkit-align-self: center;
   margin-top: 5rem;
   animation: move 3s 2s linear infinite;
 }
