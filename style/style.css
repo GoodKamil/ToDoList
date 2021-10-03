@@ -88,6 +88,8 @@ body {
   padding: 1rem 4rem;
 
   text-align: center;
+  -webkit-text-align: center;
+  background-color: var(--color-white);
   border-style: none;
   border-radius: 100px;
   cursor: pointer;
