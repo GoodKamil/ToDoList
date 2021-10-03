@@ -170,6 +170,7 @@ body {
 }
 .btn__Task {
   align-self: center;
+  text-align: center;
   -webkit-align-self: center;
   margin-top: 5rem;
   animation: move 3s 2s linear infinite;
